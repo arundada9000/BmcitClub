@@ -142,10 +142,21 @@
             }
         }
 
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
         .animated-image {
-            animation: fadeIn 1s ease-in forwards;
-            animation-delay: 2s;
+            animation: fadeIn 1s ease-in forwards, spin 2s linear 1s forwards;
+            animation-delay: 2s, 2s;
             opacity: 0;
+            transform-origin: 50% 50%;
         }
 
         .main-content {
