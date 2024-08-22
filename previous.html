@@ -4,30 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMC IT Club</title>
+    <title>BMCIT Club</title>
     <link rel="icon" href="./images/bmc-it-club-circle-logo.png" type="image/x-icon">
     <style>
-        /* General reset for consistent styling */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Body styling to center content */
         body {
-            height: 100vh;
+            height: 100svh;
             width: 100vw;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background-color: #fff;
         }
 
-        /* Circle animations */
-        .circle-outer,
-        .circle-inner {
+        .circle-outer {
             stroke-dasharray: 471.24;
             stroke-dashoffset: 471.24;
             animation: draw-circle 1s ease-out forwards;
@@ -36,6 +31,7 @@
         .circle-inner {
             stroke-dasharray: 314.16;
             stroke-dashoffset: -314.16;
+            animation: draw-circle 1s ease-out forwards;
         }
 
         @keyframes draw-circle {
@@ -44,7 +40,6 @@
             }
         }
 
-        /* Preloader rotation animation */
         .preloader {
             position: relative;
             animation: rotate-div 6s ease-out forwards;
@@ -64,7 +59,6 @@
             }
         }
 
-        /* Ribbon animations */
         .ribbon-left,
         .ribbon-right {
             position: absolute;
@@ -80,12 +74,14 @@
 
         .ribbon-right {
             right: -100vw;
+            /* Start off-screen on the right */
             animation: moveInFromRight 2s ease-out forwards, showText 0.5s ease-in 2s forwards;
         }
 
         @keyframes moveInFromLeft {
             to {
                 left: 75px;
+                /* Move to the center */
                 opacity: 1;
                 transform: translate(-100%, -50%);
             }
@@ -94,6 +90,7 @@
         @keyframes moveInFromRight {
             to {
                 right: 75px;
+                /* Move to the center */
                 opacity: 1;
                 transform: translate(100%, -50%);
             }
@@ -105,28 +102,34 @@
             }
         }
 
-        /* Text styling */
+        /* Initially hide the text */
+        .ribbon-left text,
+        .ribbon-right text {
+            opacity: 0;
+        }
+
+        /* Show the text after animation */
+        .ribbon-left text,
+        .ribbon-right text {
+            animation: showText 0.5s ease-in 2.5s forwards;
+        }
+
         .text {
             font-size: 1.35rem;
             fill: black;
             font-weight: bold;
-            font-family: Arial, Helvetica, sans-serif;
             opacity: 0;
+            font-family: Arial Helvetica, sans-serif;
             animation: showText 0.5s ease-in 2.5s forwards;
         }
 
-        /* Adjusted font-size for 'igniting' text */
+        #curve {
+            fill: transparent;
+        }
+
         .igniting .text {
             font-size: 0.65rem;
             font-weight: bold;
-        }
-
-        /* Image animation with fadeIn and spin */
-        .animated-image {
-            animation: fadeIn 1s ease-in forwards, spin 2s linear 1s forwards;
-            animation-delay: 2s;
-            opacity: 0;
-            transform-origin: 50% 50%;
         }
 
         @keyframes fadeIn {
@@ -149,7 +152,13 @@
             }
         }
 
-        /* Hide main content initially */
+        .animated-image {
+            animation: fadeIn 1s ease-in forwards, spin 2s linear 1s forwards;
+            animation-delay: 2s, 2s;
+            opacity: 0;
+            transform-origin: 50% 50%;
+        }
+
         .main-content {
             display: none;
         }
@@ -161,14 +170,15 @@
 </head>
 
 <body>
+    <!-- <img src="./images/bmcitclub_logo.jpg" alt="bmcitclub_logo" width="300px"> -->
     <div class="preloader">
         <svg width="80" height="40" xmlns="http://www.w3.org/2000/svg" class="ribbon-left">
             <!-- Left Ribbon -->
             <polygon points="0,0 60,0 60,32 0,32 16,16" fill="#0049af" />
             <text x="20" y="20" fill="white" font-family="Arial" font-size="14" font-weight="bold">Estd</text>
         </svg>
-
         <svg width="200" height="200">
+
             <defs>
                 <clipPath id="inner-circle-clip">
                     <circle cx="100" cy="100" r="50" />
@@ -180,11 +190,11 @@
             <!-- Inner Circle -->
             <circle cx="100" cy="100" r="50" fill="none" stroke="#0649ab" stroke-width="3" class="circle-inner" />
 
-            <!-- Clipped Image -->
+            <!-- Image clipped to the innermost circle -->
             <image href="./images/inside-people.png" x="50" y="50" width="100" height="100" class="animated-image"
                 clip-path="url(#inner-circle-clip)" />
 
-            <!-- BMC IT Club text curve -->
+            <!-- igniting the nation -->
             <svg width="200" height="200" class="bmc-text">
                 <path id="curve" d="M 45 100 A 50 50 0 0 1 155 100" fill="transparent" />
                 <text class="text" text-anchor="middle">
@@ -192,7 +202,6 @@
                 </text>
             </svg>
 
-            <!-- Igniting technological excellence curve -->
             <svg width="200" height="200" class="igniting">
                 <path id="curved" d="M 35 100 A 50 50 0 0 0 165 100" fill="transparent" />
                 <text class="text" text-anchor="middle">
@@ -200,17 +209,19 @@
                         excellence</textPath>
                 </text>
             </svg>
-        </svg>
 
+
+        </svg>
         <svg width="80" height="40" xmlns="http://www.w3.org/2000/svg" class="ribbon-right">
             <!-- Right Ribbon -->
             <polygon points="80,0 20,0 20,32 80,32 64,16" fill="#0049af" />
             <text x="28" y="20" fill="white" font-family="Arial" font-size="14" font-weight="bold">2080</text>
         </svg>
+
     </div>
 
     <div class="main-content">
-        <h1>BMC IT Club <strong>Webpage</strong></h1>
+        <h1>BMC IT Club <strong>Webpage</strong> </h1>
         <h2>Coming Soon ...</h2>
     </div>
 
@@ -223,6 +234,7 @@
                 mainContent.style.display = "block";
             }, 6000);
         });
+
     </script>
 </body>
 
